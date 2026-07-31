@@ -1,4 +1,5 @@
 import argparse
+
 from aoc2018 import day_1, day_02
 
 
@@ -6,6 +7,7 @@ DAYS = {
     1: day_01,
     2: day_02,
 }
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
