@@ -1,0 +1,12 @@
+[project]
+name = "aoc2018"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pytest",
+]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "aoc2018/tests"
+]
