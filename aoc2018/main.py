@@ -1,13 +1,16 @@
 import argparse
+from pathlib import Path
 
-from aoc2018 import day_01, day_02, day_03
-
+from aoc2018 import day_01, day_02, day_03, day_04
 
 DAYS = {
     1: day_01,
     2: day_02,
     3: day_03,
+    4: day_04,
 }
+
+PACKAGE_DIR = Path(__file__).resolve().parent
 
 
 def main() -> None:
@@ -27,7 +30,7 @@ def main() -> None:
 
         day_module = DAYS[day]
 
-        input_file = f"inputs/input_day_{day:02d}.txt"
+        input_file = PACKAGE_DIR / "inputs" / f"input_day_{day:02d}.txt"
 
         data = day_module.read_input(input_file)
 
