@@ -14,6 +14,13 @@ DAYS = {
 PACKAGE_DIR = Path(__file__).resolve().parent
 
 
+def load_day_input(day: int) -> list[str] | list[int]:
+    path = PACKAGE_DIR / "inputs" / f"input_day_{day:02d}.txt"
+    with path.open() as file:
+        lines = [line.strip() for line in file if line.strip()]
+    return [int(line) for line in lines] if day == 1 else lines
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -29,15 +36,11 @@ def main() -> None:
         if day not in DAYS:
             raise ValueError(f"Day {day} is not implemented yet.")
 
-        day_module = DAYS[day]
+        module = DAYS[day]
+        data = load_day_input(day)
 
-        input_file = PACKAGE_DIR / "inputs" / f"input_day_{day:02d}.txt"
-
-        data = day_module.read_input(input_file)
-
-        print(f"Day {day} - Part 1: {day_module.part1(data)}")
-        print(f"Day {day} - Part 2: {day_module.part2(data)}")
-
+        print(f"Day {day} - Part 1: {module.part1(data)}")
+        print(f"Day {day} - Part 2: {module.part2(data)}")
 
 if __name__ == "__main__":
     main()

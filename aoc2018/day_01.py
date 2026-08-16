@@ -1,8 +1,3 @@
-def read_input(filename: str) -> list[int]:
-    with open(filename) as file:
-        return [int(line.strip()) for line in file]
-
-
 def part1(changes: list[int]) -> int:
     return sum(changes)
 
