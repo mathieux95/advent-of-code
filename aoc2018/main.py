@@ -1,14 +1,14 @@
 import argparse
 from pathlib import Path
 
-
-from aoc2018 import day_01, day_02, day_03, day_04
+from aoc2018 import day_01, day_02, day_03, day_04, day_05
 
 DAYS = {
     1: day_01,
     2: day_02,
     3: day_03,
     4: day_04,
+    5: day_05,
 }
 
 PACKAGE_DIR = Path(__file__).resolve().parent
