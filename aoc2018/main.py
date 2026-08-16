@@ -1,11 +1,12 @@
 import argparse
 
-from aoc2018 import day_1, day_02
+from aoc2018 import day_01, day_02, day_03
 
 
 DAYS = {
     1: day_01,
     2: day_02,
+    3: day_03,
 }
 
 
