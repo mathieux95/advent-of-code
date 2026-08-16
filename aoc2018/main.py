@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 
+
 from aoc2018 import day_01, day_02, day_03, day_04
 
 DAYS = {
