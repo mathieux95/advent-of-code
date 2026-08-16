@@ -1,8 +1,3 @@
-def read_input(filename: str) -> list[str]:
-    with open(filename) as file:
-        return [line.strip() for line in file]
-
-
 def part1(box_ids: list[str]) -> int:
     num_twos = 0
     num_threes = 0

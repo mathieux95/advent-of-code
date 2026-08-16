@@ -1,8 +1,3 @@
-def read_input(filename: str) -> list[str]:
-    with open(filename) as file:
-        return [line.strip() for line in file]
-
-
 def parse_log(log: str) -> tuple[str, int, int, int, int]:
     timestamp, message = log.split("] ")
     date, time = timestamp[1:].split(" ")

@@ -1,8 +1,3 @@
-def read_input(filename: str) -> list[str]:
-    with open(filename) as file:
-        return [line.strip() for line in file]
-
-
 def parse_claim(claim: str) -> tuple[int, int, int, int, int]:
     claim_id, _, position, size = claim.split()
     left, top = map(int, position[:-1].split(","))
