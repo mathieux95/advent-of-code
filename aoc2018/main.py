@@ -1,13 +1,24 @@
 import argparse
+from pathlib import Path
 
-from aoc2018 import day_01, day_02, day_03
 
+from aoc2018 import day_01, day_02, day_03, day_04
 
 DAYS = {
     1: day_01,
     2: day_02,
     3: day_03,
+    4: day_04,
 }
+
+PACKAGE_DIR = Path(__file__).resolve().parent
+
+
+def load_day_input(day: int) -> list[str] | list[int]:
+    path = PACKAGE_DIR / "inputs" / f"input_day_{day:02d}.txt"
+    with path.open() as file:
+        lines = [line.strip() for line in file if line.strip()]
+    return [int(line) for line in lines] if day == 1 else lines
 
 
 def main() -> None:
@@ -25,15 +36,11 @@ def main() -> None:
         if day not in DAYS:
             raise ValueError(f"Day {day} is not implemented yet.")
 
-        day_module = DAYS[day]
+        module = DAYS[day]
+        data = load_day_input(day)
 
-        input_file = f"inputs/input_day_{day:02d}.txt"
-
-        data = day_module.read_input(input_file)
-
-        print(f"Day {day} - Part 1: {day_module.part1(data)}")
-        print(f"Day {day} - Part 2: {day_module.part2(data)}")
-
+        print(f"Day {day} - Part 1: {module.part1(data)}")
+        print(f"Day {day} - Part 2: {module.part2(data)}")
 
 if __name__ == "__main__":
     main()

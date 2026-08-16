@@ -33,7 +33,7 @@ pytest aoc2018/tests/test_day_01.py
 
 
 ### Solutions
-Run a specific Advent of Code day:
+Run a specific Advent of Code day from the project root:
 ```bash
 python -m aoc2018.main 1
 ```
@@ -42,3 +42,5 @@ or, multiple days can be executed at once:
 ```bash
 python -m aoc2018.main 1 2
 ```
+
+Each day expects its input file in `aoc2018/inputs/` using the name `input_day_XX.txt`.
