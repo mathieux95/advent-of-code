@@ -1,8 +1,3 @@
-def read_input(filename: str) -> list[str]:
-    with open(filename) as file:
-        return [line.strip() for line in file]
-
-
 def part1(data: list[str]) -> int:
     polymer = data[0]
     stack = []
@@ -25,3 +20,12 @@ def part2(data: list[str]) -> int:
         best_length = min(best_length, part1([new_polymer]))
 
     return best_length
+
+
+def part2(data: list[str]) -> int:
+    polymer = data[0]
+
+    return min(
+        part1(["".join(c for c in polymer if c.lower() != unit)])
+        for unit in set(polymer.lower())
+    )
