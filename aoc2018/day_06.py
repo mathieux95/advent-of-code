@@ -22,11 +22,11 @@ def part1(lines: list[str]) -> int:
     return max(count for coord, count in area_counts.items() if coord not in infinite_coords)
 
 
-def part2(lines: list[str]) -> int:
+def part2(lines: list[str], threshold: int = 10000) -> int:
     coordinates = split_lines(lines)
     min_x, max_x, min_y, max_y = bounds(coordinates)
+
     safe_region_size = 0
-    threshold = 10000
 
     for x in range(min_x, max_x + 1):
         for y in range(min_y, max_y + 1):
@@ -34,7 +34,7 @@ def part2(lines: list[str]) -> int:
                 manhattan_distance((x, y), coord)
                 for coord in coordinates
             )
-            
+
             if total_distance < threshold:
                 safe_region_size += 1
 
