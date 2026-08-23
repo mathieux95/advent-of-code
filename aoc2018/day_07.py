@@ -24,15 +24,22 @@ def get_available_steps(in_degree: dict[str, int]) -> set[str]:
     }
  
 
-def complete_step(
+def decrease_degree(
+    step: str,
+    graph: dict[str, set[str]],
+    in_degree: dict[str, int],
+) -> None:
+    for dependent in graph[step]:
+        in_degree[dependent] -= 1
+
+
+def remove_step(
     step: str,
     graph: dict[str, set[str]],
     in_degree: dict[str, int],
     available: set[str],
 ) -> None:
     for dependent in graph[step]:
-        in_degree[dependent] -= 1
-
         if in_degree[dependent] == 0:
             available.add(dependent)
 
@@ -52,7 +59,8 @@ def part1(data: list[str]) -> str:
         step = min(available)
         available.remove(step)
         result.append(step)
-        complete_step(step, graph, in_degree, available)
+        decrease_degree(step, graph, in_degree)
+        remove_step(step, graph, in_degree, available)
 
     return "".join(result)
 
@@ -84,7 +92,8 @@ def part2(data: list[str], num_workers: int = 5, base_time: int = 60) -> int:
             if workers[i]:
                 time_remaining[i] -= 1
                 if time_remaining[i] == 0:
-                    complete_step(workers[i], graph, in_degree, available)
+                    decrease_degree(workers[i], graph, in_degree)
+                    remove_step(workers[i], graph, in_degree, available)
                     workers[i] = None
 
     return total_time
