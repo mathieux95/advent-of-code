@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 
-from aoc2018 import day_01, day_02, day_03, day_04, day_05, day_07
+from aoc2018 import day_01, day_02, day_03, day_04, day_05, day_06, day_07, day_08
 
 DAYS = {
     1: day_01,
@@ -10,6 +10,8 @@ DAYS = {
     4: day_04,
     5: day_05,
     7: day_07,
+    6: day_06,
+    8: day_08,
 }
 
 PACKAGE_DIR = Path(__file__).resolve().parent
