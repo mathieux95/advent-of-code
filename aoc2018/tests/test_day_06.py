@@ -21,4 +21,5 @@ def test_part2() -> None:
         "5, 5",
         "8, 9",
     ]
-    assert part2(example) == 16
+
+    assert part2(example, 32) == 16
