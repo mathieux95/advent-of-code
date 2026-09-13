@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 
-from aoc2018 import day_01, day_02, day_03, day_04, day_05, day_06, day_07, day_08, day_09, day_10, day_11, day_12
+from aoc2018 import day_01, day_02, day_03, day_04, day_05, day_06, day_07, day_08, day_09, day_10, day_11, day_12, day_13
 
 DAYS = {
     1: day_01,
@@ -16,6 +16,7 @@ DAYS = {
     10: day_10,
     11: day_11,
     12: day_12,
+    13: day_13,
 
 }
 
@@ -25,7 +26,8 @@ PACKAGE_DIR = Path(__file__).resolve().parent
 def load_day_input(day: int) -> list[str] | int:
     path = PACKAGE_DIR / "inputs" / f"input_day_{day:02d}.txt"
     with path.open() as file:
-        lines = [line.strip() for line in file if line.strip()]
+        lines = [line.rstrip("\n") for line in file]
+    lines = [line for line in lines if line.strip()]
     if len(lines) == 1:
         try:
             return int(lines[0])
